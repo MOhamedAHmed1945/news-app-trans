@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'Screens/category_details_screen.dart';
-import 'Screens/category_fragment_screen.dart';
 import 'Screens/home_screen.dart';
 import 'ThemeApp/theme_app.dart';
+
 void main() {
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
@@ -18,9 +19,9 @@ class MyApp extends StatelessWidget {
       // themeMode: provider.appTheme,
       initialRoute: HomeScreen.routeName,
       routes: {
-        HomeScreen.routeName: (context) => HomeScreen(),
-        CategoryFragmentScreen.routeName: (context) => CategoryFragmentScreen(),
-        CategoryDetailsScreen.routeName: (context) => CategoryDetailsScreen(),
+        HomeScreen.routeName: (context) => const HomeScreen(),
+        // CategoryFragmentScreen.routeName: (context) => CategoryFragmentScreen(),
+        // CategoryDetailsScreen.routeName: (context) =>  CategoryDetailsScreen(),
       },
     );
   }

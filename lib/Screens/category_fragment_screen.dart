@@ -1,14 +1,15 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, must_be_immutable
 
 import 'package:flutter/material.dart';
 
 import '../Models/category_d_m.dart';
-import '../Widgets/Tabs/custom_category_Item.dart';
+import '../Widgets/custom_category_item.dart';
 
 class CategoryFragmentScreen extends StatelessWidget {
-  CategoryFragmentScreen({super.key});
+  CategoryFragmentScreen({super.key, required this.onCategoryItemClick});
   static String routeName = 'categoryFragmentScreen';
   var categoriesList = CategoryDM.getCategories();
+  Function onCategoryItemClick;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,7 +21,9 @@ class CategoryFragmentScreen extends StatelessWidget {
             'Pick Your Category \n of Interest',
             style: Theme.of(context).textTheme.titleMedium,
           ),
-          SizedBox(height: 15.0,),
+          SizedBox(
+            height: 15.0,
+          ),
           Expanded(
             child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -30,9 +33,16 @@ class CategoryFragmentScreen extends StatelessWidget {
                 ),
                 itemCount: categoriesList.length,
                 itemBuilder: (context, index) {
-                  return CustomCategoryItem(
-                    category: categoriesList[index],
-                    index: index,
+                  return InkWell(
+                    onTap: () {
+                      onCategoryItemClick(
+                        categoriesList[index]
+                      );
+                    },
+                    child: CustomCategoryItem(
+                      category: categoriesList[index],
+                      index: index,
+                    ),
                   );
                 }),
           ),

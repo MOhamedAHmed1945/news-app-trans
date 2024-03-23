@@ -45,9 +45,10 @@ import 'package:http/http.dart' as http;
 // }
 
 class ApiManager {
-  static Future<SourseResponse> getSources() async {
+  static Future<SourseResponse> getSources({required String categoryId}) async {
     Uri url = Uri.https(ApiConstatnts.baseUrl, ApiConstatnts.sources, {
       'apiKey': ApiConstatnts.apiKey,
+      'category' : categoryId,
     });
     try {
       var response = await http.get(url);

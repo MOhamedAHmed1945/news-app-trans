@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../../Models/category_d_m.dart';
+import '../Models/category_d_m.dart';
 
 class CustomCategoryItem extends StatelessWidget {
   CustomCategoryItem({super.key, required this.category, required this.index});
